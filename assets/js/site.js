@@ -490,22 +490,22 @@
     new IntersectionObserver(function (es) { if (es[0].isIntersecting) { st.classList.add('run'); play(); } else { st.classList.remove('run'); q.stop(); } }, { threshold: 0 }).observe(st);
   })();
 
-  /* ------------------------------------------------------------ Accueil : le mot-clé s'écrit, s'efface et change */
-  (function typewriter() {
+  /* ------------------------------------------------------------ Accueil : le mot-clé change en fondu (v8.32, sans curseur) */
+  (function wordSwap() {
     var el = $('.tw[data-words]'); if (!el || !motion) return;
     var words = []; try { words = JSON.parse(el.dataset.words); } catch (e) { return; }
-    var w = 0, n = words[0].length, del = true, live = true;
-    el.classList.add('typing');
-    function tick() {
-      if (!live) return setTimeout(tick, 400);
-      var word = words[w];
-      if (del) { n--; el.textContent = word.slice(0, Math.max(n, 0)); if (n <= 0) { del = false; w = (w + 1) % words.length; return setTimeout(tick, 300); } return setTimeout(tick, 50); }
-      word = words[w]; n++; el.textContent = word.slice(0, n);
-      if (n >= word.length) { del = true; return setTimeout(tick, 1500); }
-      setTimeout(tick, 75);
-    }
+    if (words.length < 2) return;
+    var w = 0, live = true;
     document.addEventListener('visibilitychange', function () { live = !document.hidden; });
-    setTimeout(tick, 1500);
+    setInterval(function () {
+      if (!live) return;
+      el.classList.add('tw-out');
+      setTimeout(function () {
+        w = (w + 1) % words.length; el.textContent = words[w];
+        el.classList.remove('tw-out'); el.classList.add('tw-in');
+        requestAnimationFrame(function () { requestAnimationFrame(function () { el.classList.remove('tw-in'); }); });
+      }, 460);
+    }, 3400);
   })();
 
   /* ------------------------------------------------------------ Cartes empilées : la carte recouverte recule doucement */
@@ -715,7 +715,7 @@
         ctx.globalCompositeOperation = 'source-over'; ctx.fillStyle = gr; ctx.fillRect(0, 0, w, h);
         ctx.fillStyle = 'rgba(255,255,255,.18)';
         for (var i = 0; i < 260; i++) ctx.fillRect(Math.random() * w, Math.random() * h, 1.4, 1.4);
-        ctx.fillStyle = '#04141A'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillStyle = '#000000'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
         ctx.font = '600 22px Poppins, sans-serif'; ctx.fillText('Grattez ici', w / 2, h / 2 - 8);
         ctx.font = '400 13px Poppins, sans-serif'; ctx.fillText('pour découvrir', w / 2, h / 2 + 20);
       }
