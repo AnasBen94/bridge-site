@@ -594,7 +594,8 @@
   /* ============================================================ Version 8.5 : gestes repris de la référence, adaptés à Bridge */
 
   /* Boutons « liquides » : la pastille de la flèche se détache au survol (filtre goo) */
-  $$('.btn-primary').forEach(function (b) {
+  /* v8.34 : boutons pilule façon Apple, sans pastille de flèche */
+  if (0) $$('.btn-primary').forEach(function (b) {
     if (b.querySelector('.liq-g')) return;
     var t = d.createElement('span'); t.className = 'bt';
     while (b.firstChild) t.appendChild(b.firstChild);
@@ -624,6 +625,7 @@
       var mid = h / 2, on = false;
       for (var i = 0; i < darks.length; i++) { var r = darks[i].getBoundingClientRect(); if (r.top <= mid && r.bottom >= mid) { on = true; break; } }
       nav.classList.toggle('on-dark', on);
+      nav.classList.toggle('is-scrolled', yy > 12);
     }
     window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(draw); } }, { passive: true });
     draw();

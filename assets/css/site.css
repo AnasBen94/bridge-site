@@ -3686,3 +3686,142 @@ h3 { font-weight: 600; letter-spacing: -.035em; }
   .hx-win { border-radius: 18px !important; border-bottom: 1px solid rgba(0, 0, 0, .08) !important; box-shadow: 0 30px 60px -36px rgba(0, 0, 0, .35) !important; }
   .hero.hero-x .trust { align-items: center !important; }
 }
+
+/* ==========================================================================
+   v8.34 : « Horizon ». Un mélange des deux références demandées :
+   - Apple : clarté, typographie semi-grasse, boutons pilule et liens à chevron,
+     contrôles segmentés, tuiles pleines, FAQ à filets, champs larges, pied de page clair ;
+   - ambiance nocturne des templates IA : accueil noir, horizon lumineux au dégradé
+     Bridge, verre sur fond sombre. Un seul moment fort, l'horizon, repris en écho
+     dans l'appel final. Police Geist hébergée sur le site (plus d'appel à Google).
+   ========================================================================== */
+@font-face { font-family: 'Geist'; src: url('/assets/fonts/geist-latin.woff2') format('woff2'); font-weight: 100 900; font-style: normal; font-display: swap; }
+:root { --text: 'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif; --display: var(--text); --hz-a: #04CBFC; --hz-b: #86FBA6; }
+svg text { font-family: 'Geist', ui-sans-serif, system-ui, sans-serif !important; }
+p { text-wrap: pretty; }
+
+/* ---------- Typographie : semi-grasse, approche Apple ---------- */
+h1, h2, h3, h4, h5, .h-big, .h-mid, .pc-tx h3, .mt-tx h3, .pc-k, .cta-box h2, .foot-cta h2, .off h3, .founder h3, .faq summary, .acc-b, .agt-tt b, .svc h3 { font-weight: 600 !important; }
+.h-big, .why-t, .sec h2.h-big, .mo-ph__head .h-big, #methode .m-head h2, .cta-box h2 { letter-spacing: -.045em !important; line-height: 1 !important; }
+.hero.hero-x .hero-c h1 { letter-spacing: -.05em !important; line-height: .96 !important; }
+.agg-t { font-size: clamp(2rem, 3.6vw, 3.25rem) !important; line-height: 1.02 !important; letter-spacing: -.042em !important; max-width: 20ch; }
+.svc .svc-h h3, .svc h3 { background: none !important; -webkit-text-fill-color: currentColor !important; color: #000 !important; }
+
+/* ---------- Boutons : pilules simples ; liens secondaires à chevron ---------- */
+.btn { border-radius: 980px !important; font-weight: 500 !important; letter-spacing: -.01em; transition: background-color .25s, color .25s, box-shadow .35s, transform .35s var(--ease-out); }
+.btn-lg { min-height: 52px !important; padding: 0 28px !important; font-size: 1.0625rem !important; }
+.btn-sm { min-height: 38px !important; height: 38px !important; padding: 0 18px !important; font-size: .9rem !important; }
+.btn-primary { background: #000 !important; color: #FFF !important; border: 0 !important; }
+.btn-primary:hover { background: #1D1D1F !important; box-shadow: 0 0 0 4px rgba(4, 203, 252, .18) !important; }
+.btn-primary:active { transform: scale(.98); }
+.btn-primary + .btn-ghost, .hero-cta .btn + .btn { margin-left: 0 !important; }
+.lnk { display: inline-flex; align-items: center; gap: 2px; font-weight: 500; letter-spacing: -.01em; color: inherit; text-decoration: none; }
+.lnk .ic { width: 1.05em; height: 1.05em; transition: transform .3s var(--ease-out); }
+.lnk:hover { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.lnk:hover .ic { transform: translateX(3px); }
+.lnk-lg { font-size: 1.0625rem; min-height: 52px; padding: 0 8px; }
+[data-dark] .btn-primary, .cta-box .btn-primary, .off-hi .btn-primary, .roi-out .btn-primary, .mid-cta .btn-primary, .nav.on-dark .btn-primary { background: #FFF !important; color: #000 !important; }
+[data-dark] .btn-primary:hover, .cta-box .btn-primary:hover, .nav.on-dark .btn-primary:hover { background: #FFF !important; box-shadow: 0 0 0 4px rgba(134, 251, 166, .22), 0 12px 40px -10px rgba(4, 203, 252, .7) !important; }
+
+/* ---------- Navigation : logo libre, liens dans une pilule de verre, action à droite ---------- */
+.nav-in { max-width: 1240px !important; background: transparent !important; border: 0 !important; box-shadow: none !important; -webkit-backdrop-filter: none !important; backdrop-filter: none !important; padding: 0 clamp(16px, 2vw, 24px) !important; }
+.nav::before { content: ""; position: absolute; inset: -12px 0 -18px; z-index: -1; pointer-events: none; opacity: 0; transition: opacity .3s; background: linear-gradient(180deg, rgba(255, 255, 255, .92) 35%, rgba(255, 255, 255, 0)); }
+.nav.is-scrolled::before { opacity: 1; }
+.nav.on-dark::before { background: linear-gradient(180deg, rgba(0, 0, 0, .85) 35%, rgba(0, 0, 0, 0)); }
+.nav-links { background: rgba(255, 255, 255, .72); border: 1px solid rgba(0, 0, 0, .08); -webkit-backdrop-filter: blur(20px) saturate(1.8); backdrop-filter: blur(20px) saturate(1.8); border-radius: 999px; padding: 4px !important; gap: 2px !important; box-shadow: 0 8px 24px -16px rgba(0, 0, 0, .25); }
+.nav-links a { border-radius: 999px; padding: 8px 14px !important; font-size: .9rem !important; color: #000 !important; }
+.nav-links a::after { display: none !important; }
+.nav-links a:hover, .nav-links a[aria-current] { background: rgba(0, 0, 0, .06) !important; }
+.nav.on-dark .nav-links { background: rgba(255, 255, 255, .06); border-color: rgba(255, 255, 255, .14); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .06); }
+.nav.on-dark .nav-links a { color: #FFF !important; }
+.nav.on-dark .nav-links a:hover, .nav.on-dark .nav-links a[aria-current] { background: rgba(255, 255, 255, .1) !important; }
+.nav-mail { font-size: .9rem; }
+.nav.on-dark .burger span { background: #FFF !important; }
+
+/* ---------- Accueil de nuit : l'horizon ---------- */
+.hero.hero-x { background: #000 !important; color: #FFF; overflow: clip; isolation: isolate; }
+.hero.hero-x .hero-c h1, .hero.hero-x .hero-c h1 .h1-a, .hero-x .hero-sub, .hero.hero-x .trust li, .hero-badge .hero-k, .hero-x .lnk { color: #FFF !important; }
+.hero-badge .hb-l { background: rgba(255, 255, 255, .06) !important; border: 1px solid rgba(255, 255, 255, .14) !important; -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+.hx { background: transparent !important; overflow: visible !important; padding: clamp(84px, 9vw, 132px) clamp(12px, 4vw, 48px) 0 !important; max-width: 1240px; }
+.hx::before { display: none !important; }
+.hx-win { z-index: 2; margin-bottom: -64px; border-color: rgba(255, 255, 255, .16) !important; box-shadow: 0 0 0 1px rgba(255, 255, 255, .08), 0 -12px 60px -10px rgba(4, 203, 252, .35), 0 50px 120px -40px rgba(0, 0, 0, .8) !important; }
+.hz { position: absolute; left: 50%; top: clamp(24px, 3vw, 44px); width: 0; height: 0; z-index: 0; pointer-events: none; }
+.hz > i { position: absolute; left: 0; translate: -50% 0; display: block; }
+.hz-planet { top: 0; width: var(--hz-d, 2700px); aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 50% 0, #071012 0, #000 22%); box-shadow: 0 0 0 1px rgba(255, 255, 255, .5), 0 -2px 10px rgba(255, 255, 255, .55), 0 -14px 44px rgba(134, 251, 166, .42), 0 -42px 130px rgba(4, 203, 252, .42), 0 -110px 260px rgba(4, 203, 252, .22); }
+.hz-glow { top: -300px; width: min(1500px, 120vw); height: 560px; background: radial-gradient(50% 62% at 50% 100%, rgba(4, 203, 252, .5), rgba(134, 251, 166, .2) 42%, transparent 74%); filter: blur(36px); }
+.hz-rays { top: -600px; width: min(1600px, 130vw); height: 620px; opacity: .85;
+  background: repeating-linear-gradient(90deg, transparent 0 13px, rgba(134, 251, 166, .16) 14px 16px, transparent 17px 31px, rgba(4, 203, 252, .15) 32px 34px, transparent 35px 51px),
+              repeating-linear-gradient(90deg, transparent 0 37px, rgba(255, 255, 255, .07) 38px 40px, transparent 41px 89px);
+  -webkit-mask-image: radial-gradient(46% 92% at 50% 100%, #000 0, rgba(0, 0, 0, .55) 38%, transparent 76%); mask-image: radial-gradient(46% 92% at 50% 100%, #000 0, rgba(0, 0, 0, .55) 38%, transparent 76%);
+  filter: blur(2.5px); animation: hzRays 11s ease-in-out infinite alternate; }
+@keyframes hzRays { from { background-position: 0 0, 0 0; opacity: .7; } to { background-position: 46px 0, -60px 0; opacity: .95; } }
+.hx .hx-note { background: rgba(18, 20, 22, .55) !important; border: 1px solid rgba(255, 255, 255, .14) !important; color: #FFF !important; -webkit-backdrop-filter: blur(18px) saturate(1.4); backdrop-filter: blur(18px) saturate(1.4); box-shadow: 0 20px 50px -24px rgba(0, 0, 0, .9) !important; z-index: 3; }
+.hx .hx-note b, .hx .hx-note small { color: #FFF !important; }
+.hx .hx-note .mo-note-ic { background: rgba(255, 255, 255, .08) !important; }
+@media (max-width: 760px) { .hz { --hz-d: 1100px; top: 18px; } .hz-glow { height: 360px; top: -190px; } .hz-rays { height: 400px; top: -390px; } .hx-win { margin-bottom: -40px; } }
+@media (prefers-reduced-motion: reduce) { .hz-rays { animation: none; } }
+
+/* ---------- Contrôles segmentés (méthode : clair ; secteurs : verre) ---------- */
+.mt-menu { border-radius: 999px !important; padding: 4px !important; background: #E9E9EB !important; border: 0 !important; }
+.mt-tab { border-radius: 999px !important; }
+.mt-tab[aria-selected="true"] { background: #FFF !important; box-shadow: 0 1px 2px rgba(0, 0, 0, .08), 0 3px 10px rgba(0, 0, 0, .06) !important; }
+.pts { border-radius: 999px !important; padding: 4px !important; background: rgba(255, 255, 255, .08) !important; border: 1px solid rgba(255, 255, 255, .1) !important; }
+.pts .pt { border-radius: 999px !important; }
+
+/* ---------- Secteurs : les cartes blanches gardent un texte noir ---------- */
+.sec-dark .sp p, .sec-dark .sp summary, .sec-dark .sp li, .sec-dark .sp a, .sec-dark .sp b, .sec-dark .sp span:not(.ic) { color: #000 !important; }
+
+/* ---------- Démo HubSpot : faux liens devenus du texte ---------- */
+.hs-ti .hs-a { color: #0091AE; font-weight: 500; }
+
+/* ---------- FAQ : filets, sans boîtes ---------- */
+.faq-list details { background: transparent !important; border: 0 !important; border-bottom: 1px solid rgba(0, 0, 0, .12) !important; border-radius: 0 !important; box-shadow: none !important; }
+.faq-list details:first-child { border-top: 1px solid rgba(0, 0, 0, .12) !important; }
+.faq-list summary { padding: 22px 4px !important; font-size: 1.12rem !important; letter-spacing: -.02em; }
+.faq-list .faq-a { padding: 0 4px 22px !important; }
+
+/* ---------- Champs de formulaire ---------- */
+.contact input:not([type="checkbox"]):not([type="radio"]), .contact select, .contact textarea, form input:not([type="checkbox"]):not([type="radio"]), form select, form textarea { border-radius: 12px !important; border: 1px solid rgba(0, 0, 0, .16) !important; background: #FFF !important; font-size: 1rem !important; }
+form input:not([type="checkbox"]):not([type="radio"]), form select { min-height: 52px; }
+form input:focus, form select:focus, form textarea:focus { outline: none !important; border-color: #000 !important; box-shadow: 0 0 0 4px rgba(4, 203, 252, .22) !important; }
+
+/* ---------- Résultat du calculateur et offre mise en avant : verre lumineux ---------- */
+.roi-out, .off-hi { box-shadow: 0 0 0 1px rgba(255, 255, 255, .08) inset, 0 30px 80px -36px rgba(4, 203, 252, .6) !important; }
+
+/* ---------- Appel final : l'horizon en écho ---------- */
+.cta-box { text-align: center; overflow: hidden !important; padding-bottom: clamp(150px, 16vw, 220px) !important; }
+.cta-box::after { display: none !important; }
+.cta-box h2, .cta-box .lead { margin-inline: auto !important; }
+.cta-box .cta-act { justify-content: center; }
+.cta-av { display: none !important; }
+.hz-cta { top: auto; bottom: clamp(70px, 9vw, 120px); --hz-d: 2200px; }
+.hz-cta .hz-rays { opacity: .6; }
+
+/* ---------- Pied de page clair, façon Apple ---------- */
+html body .foot { background: #F5F5F5 !important; color: #000 !important; }
+html body .foot *:not(.ic):not(svg):not(use):not(path) { color: #000 !important; }
+html body .foot .btn-primary { background: #000 !important; color: #FFF !important; }
+html body .foot .btn-primary * { color: #FFF !important; }
+.foot-mark { display: none !important; }
+.foot .foot-cta { border-color: rgba(0, 0, 0, .1) !important; }
+.foot .foot-cta h2 em { background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent !important; }
+.foot a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.foot .legal, .foot .foot-b { border-color: rgba(0, 0, 0, .1) !important; font-size: .82rem; }
+.hero.hero-x .hx-win { color: #000 !important; }
+.hero.hero-x .hx-win .hx-k, .hero.hero-x .hx-win .hx-t b, .hero.hero-x .hx-win .hx-t small, .hero.hero-x .hx-win .hx-foot, .hero.hero-x .hx-win .mac-bar { color: #000 !important; }
+.hero.hero-x .hx-win .hx-btn { color: #FFF !important; }
+/* chapitres : photo plein cadre, légende en verre dépoli */
+main [data-moment="photo-chapters"].is-live .mo-ph__stage { border-radius: 28px !important; }
+main [data-moment="photo-chapters"].is-live .mo-ph__panel { background: rgba(255, 255, 255, .74) !important; -webkit-backdrop-filter: blur(24px) saturate(1.6); backdrop-filter: blur(24px) saturate(1.6); border: 1px solid rgba(255, 255, 255, .6); box-shadow: 0 24px 60px -34px rgba(0, 0, 0, .5); border-radius: 20px !important; }
+/* lueurs plus discrètes sur fond clair */
+.roi-out, .off-hi { box-shadow: 0 0 0 1px rgba(255, 255, 255, .08) inset, 0 24px 60px -40px rgba(4, 203, 252, .45) !important; }
+/* pied de page : bouton et icônes lisibles */
+html body .foot a.btn.btn-primary, html body .foot a.btn.btn-primary * { color: #FFF !important; }
+html body .foot .ic { color: #000 !important; }
+html body .foot { --ic-stroke: url(#icGrad); }
+html body .foot .ic, html body .foot .ic * { stroke: url(#icGrad); }
+/* fenêtre de l'agent : une ligne en attente garde un texte noir lisible ; seuls l'icône et l'état s'estompent */
+.hx-list li.is-wait { opacity: 1 !important; }
+.hx-list li.is-wait .hx-src, .hx-list li.is-wait .hx-st { opacity: .35; transition: opacity .4s; }
+@keyframes hxIn { from { transform: translateY(4px); } to { transform: none; } }
+html body .foot svg:not(.ic) { color: #000 !important; fill: currentColor; }

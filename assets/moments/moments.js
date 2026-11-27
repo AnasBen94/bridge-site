@@ -25,7 +25,7 @@
     <script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
     <link rel="modulepreload" href="assets/moments/moments.js"><link rel="modulepreload" href="assets/moments/lib.js">
 */
-import * as lib from './lib.js';
+import * as lib from './lib.js?v=834';
 
 const BASE = new URL('./', import.meta.url);
 const html = document.documentElement;
