@@ -1,6 +1,6 @@
 {
   "name": "bridge-site",
-  "version": "8.30.0",
+  "version": "10.0.0",
   "private": true,
   "description": "Site de Bridge, agence d’automatisation IA, et de son assistant Milo.",
   "type": "commonjs",
