@@ -1180,29 +1180,36 @@ h1 em, h2 em, h3 em { font-style: normal; background: var(--grad); -webkit-backg
 @container (max-width: 470px) { .no-app { grid-template-columns: minmax(0, 1fr); } .no-side { display: none; } .no-page { padding: 14px 18px 18px; } .no-title { font-size: 1.4rem; } }
 
 /* ---------- Aperçu WhatsApp (conversation en mode sombre) ---------- */
-.wap { display: flex; flex-direction: column; min-height: 400px; background: #FFFFFF; color: #E9EDEF; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
-.wa-head { display: flex; align-items: center; gap: 10px; padding: 10px 12px; background: #121212; }
-.wa-back { display: inline-flex; align-items: center; gap: 2px; padding: 6px 12px 6px 6px; border-radius: 999px; background: #1E1E1E; font-size: .95rem; }
-.wa-back .ic { width: 18px; height: 18px; }
-.wa-av { display: grid; place-items: center; flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; background: #7C5CBF; font-weight: 500; }
+/* Aperçu WhatsApp, thème clair d'iOS : fond beige à petits dessins, bulles blanches et vertes */
+.wap { display: flex; flex-direction: column; min-height: 400px; background: #EFEAE2 url(/assets/img/wa-fond.svg) 0 0 / 300px 300px repeat; color: #111B21; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+.wa-head { display: flex; align-items: center; gap: 10px; padding: 10px 12px; background: rgba(247, 246, 244, .94); }
+.wa-back { display: inline-flex; align-items: center; justify-content: center; gap: 2px; min-width: 40px; height: 40px; padding: 0 12px 0 8px; border-radius: 999px; background: #FFFFFF; box-shadow: 0 1px 4px rgba(11, 20, 26, .1); color: #111B21; font-size: .95rem; font-weight: 500; }
+.wa-back .ic { width: 20px; height: 20px; }
+.wa-av { display: grid; place-items: center; flex-shrink: 0; width: 38px; height: 38px; border-radius: 50%; background: #D3EFEA; color: #1F7A6E; font-weight: 600; }
 .wa-name { min-width: 0; }
-.wa-name b { display: block; font-size: 1rem; font-weight: 500; }
-.wa-name small { display: block; color: #8696A0; font-size: .72rem; }
-.wa-act { display: flex; gap: 18px; margin-left: auto; padding: 8px 16px; border-radius: 999px; background: #1E1E1E; }
-.wa-act .ic { width: 20px; height: 20px; }
-.wa-body { display: flex; flex: 1; flex-direction: column; gap: 6px; padding: 12px 14px 14px; }
-.wa-sys { align-self: center; padding: 4px 12px; border-radius: 8px; background: #1E1E1E; font-size: .76rem; font-weight: 500; }
-.wa-note { align-self: center; max-width: 92%; margin-bottom: 6px; padding: 6px 10px; border-radius: 8px; background: #1C1A12; color: #FFD279; font-size: .72rem; text-align: center; }
-.wa-b { position: relative; max-width: 82%; padding: 7px 10px 7px 12px; border-radius: 14px; font-size: .92rem; line-height: 1.35; }
-.wa-in { align-self: flex-start; border-top-left-radius: 4px; background: #1F1F1F; }
-.wa-out { align-self: flex-end; border-top-right-radius: 4px; background: #144D37; }
-.wa-m { display: inline-flex; align-items: center; gap: 4px; float: right; margin: 6px 0 -3px 10px; color: rgba(233, 237, 239, .6); font-size: .68rem; }
+.wa-name b { display: block; color: #111B21; font-size: 1.02rem; font-weight: 600; }
+.wa-name small { display: block; color: #667781; font-size: .72rem; }
+.wa-act { display: flex; gap: 22px; margin-left: auto; padding: 9px 18px; border-radius: 999px; background: #FFFFFF; box-shadow: 0 1px 4px rgba(11, 20, 26, .1); }
+.wa-act .ic { width: 21px; height: 21px; }
+.wa-body { display: flex; flex: 1; flex-direction: column; gap: 8px; padding: 14px 18px 16px; }
+.wa-sys { align-self: center; padding: 5px 12px; border-radius: 999px; background: #FFFFFF; box-shadow: 0 1px .5px rgba(11, 20, 26, .13); color: #111B21; font-size: .76rem; font-weight: 600; }
+.wa-note { align-self: center; max-width: 92%; margin-bottom: 4px; padding: 6px 12px; border-radius: 10px; background: #FFF3C4; box-shadow: 0 1px .5px rgba(11, 20, 26, .13); color: #3B3420; font-size: .72rem; text-align: center; }
+.wa-b { position: relative; max-width: 80%; padding: 7px 10px 7px 12px; border-radius: 18px; box-shadow: 0 1px .5px rgba(11, 20, 26, .13); color: #111B21; font-size: .92rem; line-height: 1.35; }
+.wa-b::before { content: ""; position: absolute; bottom: 0; width: 16px; height: 17px; background: inherit; -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 17'%3E%3Cpath d='M16 0v17H1.6c-1.1 0-1.6-1.2-.9-1.9C3.4 12.6 6 9.5 6 0z'/%3E%3C/svg%3E") no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 17'%3E%3Cpath d='M16 0v17H1.6c-1.1 0-1.6-1.2-.9-1.9C3.4 12.6 6 9.5 6 0z'/%3E%3C/svg%3E") no-repeat; }
+.wa-in { align-self: flex-start; border-bottom-left-radius: 6px; background: #FFFFFF; }
+.wa-in::before { left: -6px; }
+.wa-out { align-self: flex-end; border-bottom-right-radius: 6px; background: #D9FDD3; }
+.wa-out::before { right: -6px; transform: scaleX(-1); }
+.wa-m { display: inline-flex; align-items: center; gap: 4px; float: right; margin: 6px 0 -3px 10px; color: #667781; font-size: .68rem; }
 .wa-tk { width: 16px; height: 10px; fill: none; stroke: #53BDEB; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-.wa-bar { display: flex; align-items: center; gap: 12px; padding: 10px 12px; background: #121212; }
-.wa-bar > .ic { width: 22px; height: 22px; flex-shrink: 0; }
-.wa-in-f { flex: 1; height: 34px; border-radius: 999px; background: #1E1E1E; }
-.wa-mic { display: grid; place-items: center; flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%; background: #21C063; color: #04141A; }
-.wa-mic .ic { width: 20px; height: 20px; }
+.wa-bar { display: flex; align-items: center; gap: 12px; padding: 10px 12px; background: rgba(247, 246, 244, .94); }
+.wa-bar > .ic { width: 24px; height: 24px; flex-shrink: 0; }
+.wa-in-f { flex: 1; height: 36px; border: 1px solid #DEDCD7; border-radius: 999px; background: #FFFFFF; }
+.wa-mic { display: grid; place-items: center; flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%; background: #1DAA61; }
+.wa-mic .ic { width: 21px; height: 21px; }
+.wap svg.ic { --ic-stroke: #111B21 !important; }
+.wa-mic svg.ic { --ic-stroke: #FFFFFF !important; }
+@media (max-width: 600px) { .wa-head { gap: 8px; padding: 10px; } .wa-back { min-width: 36px; height: 36px; padding: 0 10px 0 6px; } .wa-av { width: 34px; height: 34px; } .wa-name b { font-size: .96rem; } .wa-act { gap: 16px; padding: 8px 12px; } .wa-body { padding-inline: 14px; } }
 
 /* ---------- Plus de vert seul : le dégradé Bridge à la place (règles reprises de la v7.1) ---------- */
 .ex-label::before { background: var(--grad); }

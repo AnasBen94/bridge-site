@@ -319,6 +319,8 @@
     var items = $$('.acc-i', box), panes = $$('#actions .pane'), auto = motion, cur = 0, timer = null, inView = false;
     var T = { gmail: [300, 750, 1200, 1650, 2300], hubspot: [300, 650, 1000, 1350, 2200], sheets: [300, 600, 900, 1200, 1500, 2100, 2700, 3400], notion: [300, 900, 1500, 2100, 2800], whatsapp: [200, 700, 1700, 2600, 3500] };
     var st = {}; panes.forEach(function (p) { st[p.dataset.k] = stepper(p); });
+    // la barre d'adresse suit l'outil affiché
+    var URL = { gmail: 'mail.google.com', hubspot: 'app.hubspot.com', sheets: 'docs.google.com', notion: 'notion.so', whatsapp: 'web.whatsapp.com' }, url = $('#actions .mac-url');
     var DUR = 6500 * SLOW;
     function open(i, user) {
       cur = i;
@@ -329,6 +331,7 @@
       });
       var k = items[i].dataset.k;
       panes.forEach(function (p) { p.hidden = p.dataset.k !== k; });
+      if (url && URL[k] && url.lastChild && url.lastChild.nodeType === 3) url.lastChild.nodeValue = URL[k];
       st[k].play(T[k]);
       clearTimeout(timer);
       if (user) { auto = false; box.classList.add('manual'); }
